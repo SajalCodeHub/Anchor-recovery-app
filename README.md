@@ -1,960 +1,381 @@
-# \# ANCHOR
+@'
+<div align="center">
 
-# 
+# ⚓ ANCHOR
 
-# \### A Free, Privacy-First Habit \& Addiction Recovery Companion
+### A Free, Privacy-First Habit & Addiction Recovery Companion
 
-# 
+**SE641 / CSCI695 — Application and Database Systems**  
+**St. Cloud State University • Fall 2026**
 
-# ANCHOR is a database-backed habit and addiction recovery application designed to provide users with free, private, and accessible tools for recovery tracking, reflection, and peer encouragement.
+<br>
 
-# 
+![Academic Project](https://img.shields.io/badge/Academic%20Project-Fall%202026-4F46E5)
+![Privacy First](https://img.shields.io/badge/Privacy-First-16A34A)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?logo=supabase&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-Caching-DC382D?logo=redis&logoColor=white)
+![Status](https://img.shields.io/badge/Status-In%20Development-F59E0B)
 
-# This project is being developed for \*\*SE641 / CSCI695 – Application and Database Systems\*\* at \*\*St. Cloud State University\*\*.
+<br>
 
-# 
+**Recovery tracking • Private journaling • Crisis support • Anonymous encouragement**
 
-# \---
+</div>
 
-# 
+---
 
-# \## Overview
+## 📖 About ANCHOR
 
-# 
+**ANCHOR** is a database-backed habit and addiction recovery application designed to provide users with **free, private, and accessible tools** for recovery tracking, reflection, and peer encouragement.
 
-# Many habit and addiction recovery applications provide useful features such as sobriety streak tracking, trigger logging, personal reminders, and daily accountability. However, important accountability features are often placed behind recurring subscription fees.
+Many existing recovery applications provide useful accountability tools but place important functionality behind recurring subscription fees. At the same time, these applications may collect highly sensitive information such as relapse history, emotional triggers, locations, and personal journal entries.
 
-# 
+ANCHOR addresses both concerns by providing a **free, open, and privacy-first recovery companion** where privacy and data isolation are treated as fundamental system requirements.
 
-# ANCHOR is designed as a \*\*free, open, and privacy-first recovery companion\*\*.
+---
 
-# 
+## 🎯 Project Goals
 
-# The application focuses on protecting highly sensitive user information such as:
+ANCHOR is designed to:
 
-# 
+- 📈 Provide real-time habit and recovery tracking
+- ✅ Support daily check-ins and sobriety streak monitoring
+- 🆘 Provide immediate support during high-risk moments
+- 📝 Allow users to privately record triggers and recovery experiences
+- 🔎 Provide fast search across private journal entries
+- 🤝 Support anonymous peer encouragement
+- 🔐 Protect sensitive information through database-level security
+- 🗄️ Demonstrate advanced database concepts beyond basic CRUD operations
 
-# \- Recovery history
+---
 
-# \- Relapse dates
+## ✨ Core Features
 
-# \- Emotional triggers
+| Feature | Description |
+|---|---|
+| 📊 **Streak & Log Dashboard** | Tracks daily check-ins, sobriety streaks, relapse events, urges, and recovery trends |
+| 🆘 **Emergency Panic Button** | Provides motivational messages, grounding prompts, and personal reminders during high-risk moments |
+| 📝 **Trigger Journaling & Search** | Allows users to privately record triggers, stress levels, locations, notes, and recovery experiences |
+| 🤝 **Anonymous Support Feed** | Provides a pseudonymous community where users can give and receive encouragement without exposing sensitive recovery information |
 
-# \- High-risk situations
+---
 
-# \- Personal journal entries
+## 🛠️ Technology Stack
 
-# \- User activity and recovery patterns
+<div align="center">
 
-# 
+| Category | Technologies |
+|---|---|
+| **Primary Database** | PostgreSQL |
+| **Database Platform** | Supabase |
+| **Caching** | Redis / Upstash Redis |
+| **Authentication** | Supabase Authentication |
+| **API Support** | REST / GraphQL |
+| **Flexible Data** | PostgreSQL JSONB |
+| **Search** | PostgreSQL Full-Text Search |
+| **Security** | Row-Level Security (RLS) |
+| **Analytics** | Materialized Views & Time-Series Partitioning |
 
-# Privacy is treated as a core system requirement rather than only an application-level feature. Sensitive information is intended to be protected through database-level controls and data isolation.
+</div>
 
-# 
+---
 
-# \---
+## 🗄️ Database Design
 
-# 
+ANCHOR is designed to go beyond standard **Create, Read, Update, and Delete (CRUD)** operations.
 
-# \## Project Goals
+### Basic Operations
 
-# 
+CRUD operations will support:
 
-# ANCHOR aims to:
+- User profiles
+- Daily check-ins
+- Journal entries
+- Community posts
 
-# 
-
-# \- Provide real-time habit and recovery tracking
-
-# \- Support daily check-ins and sobriety streak monitoring
-
-# \- Provide immediate support during high-risk moments
-
-# \- Allow users to privately record and search triggers and experiences
-
-# \- Support anonymous peer encouragement
-
-# \- Protect sensitive user information through database-level security
-
-# \- Demonstrate advanced database design and implementation concepts beyond basic CRUD operations
-
-# 
-
-# \---
-
-# 
-
-# \## Core Features
-
-# 
-
-# \### Streak \& Log Dashboard
-
-# 
-
-# The dashboard provides users with recovery-related tracking and analytics, including:
-
-# 
-
-# \- Daily recovery check-ins
-
-# \- Sobriety streaks
-
-# \- Relapse tracking
-
-# \- Urge trends
-
-# \- Time-series recovery analytics
-
-# 
-
-# \### Emergency Panic Button
-
-# 
-
-# The Panic Button is intended to provide immediate support during high-risk moments.
-
-# 
-
-# When activated, it can provide:
-
-# 
-
-# \- Motivational messages
-
-# \- Grounding prompts
-
-# \- Personal recovery reminders
-
-# \- Personal goals
-
-# 
-
-# The feature is designed to provide a low-latency response.
-
-# 
-
-# \### Trigger Journaling \& Search
-
-# 
-
-# Users can privately record information related to high-risk situations, including:
-
-# 
-
-# \- Triggers
-
-# \- Stress levels
-
-# \- Personal notes
-
-# \- Locations
-
-# \- Recovery experiences
-
-# 
-
-# Journal entries will support keyword and full-text search.
-
-# 
-
-# \### Anonymous Support Feed
-
-# 
-
-# Users can post and receive encouragement through a pseudonymous community feed.
-
-# 
-
-# The goal is to allow peer support without exposing a user's identity or sensitive recovery history.
-
-# 
-
-# \---
-
-# 
-
-# \## Technology Stack
-
-# 
-
-# \### Database
-
-# 
-
-# \- PostgreSQL
-
-# \- Supabase
-
-# 
-
-# \### Database Features
-
-# 
-
-# \- Row-Level Security (RLS)
-
-# \- JSONB
-
-# \- PostgreSQL Full-Text Search
-
-# \- Materialized Views
-
-# \- Time-Series Partitioning
-
-# \- Query Optimization
-
-# \- Indexing
-
-# 
-
-# \### Caching
-
-# 
-
-# \- Redis
-
-# \- Upstash Redis
-
-# 
-
-# \### API / Backend Support
-
-# 
-
-# \- Supabase Authentication
-
-# \- REST APIs
-
-# \- GraphQL APIs
-
-# 
-
-# Additional frontend and backend technologies may be added as development progresses.
-
-# 
-
-# \---
-
-# 
-
-# \## Database Design
-
-# 
-
-# ANCHOR uses PostgreSQL as its primary database platform, hosted through Supabase.
-
-# 
-
-# The project is designed to go beyond standard CRUD functionality by implementing advanced database techniques.
-
-# 
-
-# \### Basic Operations
-
-# 
-
-# The system supports create, read, update, and delete operations for:
-
-# 
-
-# \- User profiles
-
-# \- Daily check-ins
-
-# \- Journal entries
-
-# \- Community posts
-
-# 
-
-# \### Advanced Operations
-
-# 
-
-# \#### Time-Series Partitioning
-
-# 
-
-# Check-in and urge logs can be partitioned by month or year so analytics queries remain efficient as data volume grows.
-
-# 
-
-# \#### In-Memory Caching
-
-# 
-
-# Frequently accessed information such as active streak state and motivational content can be cached using Redis to improve response time.
-
-# 
-
-# \#### JSONB + Full-Text Search
-
-# 
-
-# Flexible journal data can be stored using PostgreSQL JSONB while full-text indexes support efficient keyword searching.
-
-# 
-
-# \#### Row-Level Security
-
-# 
-
-# PostgreSQL Row-Level Security policies are used to help ensure that sensitive records remain isolated between users.
-
-# 
-
-# \#### Materialized Views
-
-# 
-
-# Precomputed streak and engagement statistics can be stored in materialized views to reduce expensive calculations on every dashboard request.
-
-# 
-
-# \---
-
-# 
-
-# \## Development Workflow
-
-# 
-
-# Development work is managed through:
-
-# 
-
-# \- GitHub Issues
-
-# \- GitHub Project Board
-
-# \- Feature Branches
-
-# \- Pull Requests
-
-# \- Testing and Review
-
-# 
-
-# Each task moves through the following status workflow:
-
-# 
-
-# ```text
-
-# Not Started
-
-# &#x20;   ↓
-
-# In Progress
-
-# &#x20;   ↓
-
-# Ready for Integration
-
-# &#x20;   ↓
-
-# Tested
-
-# &#x20;   ↓
-
-# Done
-
-# ```
-
-# 
-
-# \### Status Definitions
-
-# 
-
-# | Status | Meaning |
-
-# |---|---|
-
-# | \*\*Not Started\*\* | The task has been created but work has not started |
-
-# | \*\*In Progress\*\* | A team member is actively working on the task |
-
-# | \*\*Ready for Integration\*\* | Development is complete and the work is ready to be merged or integrated |
-
-# | \*\*Tested\*\* | The integrated feature has been reviewed and tested |
-
-# | \*\*Done\*\* | The task has been fully completed and accepted |
-
-# 
-
-# The actual live task status will be maintained on the \*\*GitHub Project Board\*\*.
-
-# 
-
-# \---
-
-# 
-
-# \## Project Development Areas
-
-# 
-
-# The project is divided into the following main development areas.
-
-# 
-
-# \### Authentication, Privacy \& Security
-
-# 
-
-# This area includes:
-
-# 
-
-# \- Authentication
-
-# \- Row-Level Security policies
-
-# \- Field protection
-
-# \- Session handling
-
-# \- User data isolation
-
-# 
-
-# \### Streak Engine \& Core Daily Logs
-
-# 
-
-# This area includes:
-
-# 
-
-# \- Daily check-in schema
-
-# \- Streak calculations
-
-# \- Recovery history
-
-# \- Materialized views
-
-# \- Streak-related APIs
-
-# 
-
-# \### Panic Button \& Redis Caching
-
-# 
-
-# This area includes:
-
-# 
-
-# \- Panic Button endpoint
-
-# \- Motivational content
-
-# \- Redis caching
-
-# \- Event logging
-
-# \- Low-latency response handling
-
-# 
-
-# \### Journaling, Search \& Anonymous Feed
-
-# 
-
-# This area includes:
-
-# 
-
-# \- Journal data model
-
-# \- JSONB storage
-
-# \- Full-text search
-
-# \- Pseudonymous posting
-
-# \- Anonymous community support
-
-# 
-
-# \### Time-Series Analytics \& Trend Engine
-
-# 
-
-# This area includes:
-
-# 
-
-# \- Table partitioning
-
-# \- Query optimization
-
-# \- Analytics queries
-
-# \- Trend calculations
-
-# \- Recovery pattern analysis
-
-# 
-
-# \### Integration \& Quality Assurance
-
-# 
-
-# This area includes:
-
-# 
-
-# \- Cross-feature integration
-
-# \- Testing
-
-# \- Security verification
-
-# \- Database validation
-
-# \- Deployment preparation
-
-# 
-
-# \---
-
-# 
-
-# \## Development Timeline
-
-# 
-
-# The project follows a sprint-based development process.
-
-# 
-
-# \### Sprint 0 — Weeks 1–2
-
-# 
-
-# \*\*Kickoff\*\*
-
-# 
-
-# \- Baseline schema design
-
-# \- Environment setup
-
-# \- Wireframes
-
-# \- Minimal authentication and user table
-
-# 
-
-# \### Sprint 1 — Weeks 3–6
-
-# 
-
-# Parallel development of:
-
-# 
-
-# \- Authentication, Privacy \& Security
-
-# \- Streak Engine \& Core Daily Logs
-
-# \- Panic Button \& Redis Caching
-
-# \- Journaling, Search \& Anonymous Feed
-
-# 
-
-# \### Sprint 2 — Weeks 7–8
-
-# 
-
-# \*\*Time-Series Analytics \& Trend Engine\*\*
-
-# 
-
-# \- Table partitioning
-
-# \- Query-optimized indexes
-
-# \- Analytics APIs
-
-# 
-
-# \### Sprint 3 — Weeks 9–10
-
-# 
-
-# \*\*Feature Hardening \& Cross-Feature Polish\*\*
-
-# 
-
-# \- Refine existing features
-
-# \- Improve reliability
-
-# \- Resolve integration gaps
-
-# \- Strengthen database operations
-
-# 
-
-# \### Sprint 4 — Weeks 11–12
-
-# 
-
-# \*\*Integration\*\*
-
-# 
-
-# \- Integrate database features
-
-# \- Merge security policies
-
-# \- Integrate partitioning
-
-# \- Integrate materialized views
-
-# \- Resolve cross-feature issues
-
-# 
-
-# \### Sprint 5 — Weeks 13–14
-
-# 
-
-# \*\*Final Testing \& Deployment\*\*
-
-# 
-
-# \- End-to-end testing
-
-# \- Final deployment
-
-# \- Documentation
-
-# \- Quality assurance
-
-# 
-
-# Testing and QA are intended to run continuously throughout the project.
-
-# 
-
-# \---
-
-# 
-
-# \## Team Collaboration
-
-# 
-
-# All team members are expected to use GitHub for collaboration and project tracking.
-
-# 
-
-# Team members should:
-
-# 
-
-# \- Work from assigned GitHub Issues
-
-# \- Keep task status updated on the GitHub Project Board
-
-# \- Use feature branches for development
-
-# \- Avoid making major changes directly to the `main` branch
-
-# \- Open Pull Requests when work is ready for integration
-
-# \- Review and test changes before marking tasks complete
-
-# \- Use clear and meaningful commit messages
-
-# \- Document important technical decisions
-
-# \- Communicate blockers or integration issues with the team
-
-# 
-
-# \---
-
-# 
-
-# \## Branching Strategy
-
-# 
-
-# Development should be performed using feature branches.
-
-# 
-
-# Example:
-
-# 
-
-# ```text
-
-# main
-
-# 
-
-# feature/authentication
-
-# feature/rls-security
-
-# feature/streak-engine
-
-# feature/panic-button
-
-# feature/journal-search
-
-# feature/anonymous-feed
-
-# feature/analytics
-
-# ```
-
-# 
-
-# A typical development workflow is:
-
-# 
-
-# ```text
-
-# Create Issue
-
-# &#x20;   ↓
-
-# Assign Team Member
-
-# &#x20;   ↓
-
-# Move to In Progress
-
-# &#x20;   ↓
-
-# Create Feature Branch
-
-# &#x20;   ↓
-
-# Develop Feature
-
-# &#x20;   ↓
-
-# Commit Changes
-
-# &#x20;   ↓
-
-# Push Branch
-
-# &#x20;   ↓
-
-# Open Pull Request
-
-# &#x20;   ↓
-
-# Move to Ready for Integration
-
-# &#x20;   ↓
-
-# Review / Integrate
-
-# &#x20;   ↓
-
-# Test
-
-# &#x20;   ↓
-
-# Move to Tested
-
-# &#x20;   ↓
-
-# Merge into Main
-
-# &#x20;   ↓
-
-# Move to Done
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## Repository Structure
-
-# 
-
-# The repository structure will evolve as development progresses.
-
-# 
-
-# A possible structure is:
-
-# 
-
-# ```text
-
-# anchor-recovery-app/
-
-# │
-
-# ├── README.md
-
-# ├── .gitignore
-
-# │
-
-# ├── docs/
-
-# │   ├── architecture/
-
-# │   ├── database-design/
-
-# │   └── project-documentation/
-
-# │
-
-# ├── database/
-
-# │   ├── schema/
-
-# │   ├── migrations/
-
-# │   ├── rls/
-
-# │   ├── views/
-
-# │   └── seed/
-
-# │
-
-# ├── backend/
-
-# │
-
-# ├── frontend/
-
-# │
-
-# ├── tests/
-
-# │
-
-# └── scripts/
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## Team Members
-
-# 
-
-# \- Sahar Atie
-
-# \- Anastasiya Gorlov
-
-# \- Kehinde O. Ayeyemi
-
-# \- Sajal Bhattarai
-
-# \- Assan Saidy
-
-# 
-
-# \---
-
-# 
-
-# \## Course Information
-
-# 
-
-# \*\*Course:\*\* SE641 / CSCI695 – Application and Database Systems  
-
-# \*\*Institution:\*\* St. Cloud State University  
-
-# \*\*Semester:\*\* Fall 2026
-
-# 
-
-# \---
-
-# 
-
-# \## Project Status
-
-# 
-
-# \*\*Current Status:\*\* Initial Development / Project Setup
-
-# 
-
-# The team is currently setting up:
-
-# 
-
-# \- GitHub repository
-
-# \- Team collaboration access
-
-# \- GitHub Project Board
-
-# \- Development workflow
-
-# \- Database structure
-
-# \- Development environment
-
-# 
-
-# \---
-
-# 
-
-# \## Academic Purpose
-
-# 
-
-# This project is being developed as part of an academic course project and is intended to demonstrate practical application and database system design skills.
-
-# 
-
-# \---
-
-# 
-
-# \## License
-
-# 
-
-# Licensing information may be added later if the project is released publicly.
-
-# 
-
-# \---
-
-# 
-
-# \## Disclaimer
-
-# 
-
-# ANCHOR is an academic software project intended to support habit and addiction recovery tracking and reflection.
-
-# 
-
-# It is not intended to replace professional medical, psychological, addiction-treatment, crisis, or emergency services.
-
+### Advanced Database Operations
+
+| Database Technique | Purpose |
+|---|---|
+| **Time-Series Partitioning** | Partitions check-in and urge logs by time period so analytics remain efficient as data grows |
+| **Redis Caching** | Caches active streak information and motivational content for low-latency responses |
+| **JSONB** | Supports flexible storage of journal-related information |
+| **Full-Text Search** | Enables fast keyword searching across private journal entries |
+| **Row-Level Security (RLS)** | Helps ensure users can access only the data they are authorized to access |
+| **Materialized Views** | Precomputes streak and engagement statistics for faster dashboard analytics |
+| **Query-Optimized Indexes** | Improves performance of commonly executed database queries |
+
+---
+
+## 🧩 Project Development Areas
+
+The application is divided into several major development areas.
+
+| Development Area | Primary Responsibilities |
+|---|---|
+| 🔐 **Authentication, Privacy & Security** | Authentication, RLS policies, field protection, session handling, and user data isolation |
+| 🔥 **Streak Engine & Core Daily Logs** | Daily check-ins, streak calculations, recovery history, materialized views, and related APIs |
+| 🆘 **Panic Button & Redis Caching** | Panic Button endpoint, motivational content, Redis caching, and event logging |
+| 📝 **Journaling, Search & Anonymous Feed** | JSONB journal storage, full-text search, pseudonymous posting, and anonymous peer support |
+| 📈 **Time-Series Analytics & Trend Engine** | Table partitioning, query optimization, analytics APIs, and recovery trend analysis |
+| 🧪 **Integration & Quality Assurance** | Cross-feature integration, testing, security verification, database validation, and deployment preparation |
+
+---
+
+## 🚦 Development Workflow
+
+Development is coordinated using:
+
+- **GitHub Issues**
+- **GitHub Project Board**
+- **Feature Branches**
+- **Pull Requests**
+- **Code Review**
+- **Testing & QA**
+
+### Task Status Flow
+
+```text
+┌─────────────────────┐
+│     Not Started     │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│     In Progress     │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ Ready for Integration│
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│       Tested        │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│        Done         │
+└─────────────────────┘
+```
+
+### Status Definitions
+
+| Status | Meaning |
+|---|---|
+| ⚪ **Not Started** | Task has been identified but development has not started |
+| 🔵 **In Progress** | A team member is actively working on the task |
+| 🟣 **Ready for Integration** | Development is complete and ready to be reviewed or integrated |
+| 🟡 **Tested** | The integrated feature has been reviewed and tested |
+| 🟢 **Done** | The task has been successfully completed and accepted |
+
+> **Live task progress will be maintained through the ANCHOR GitHub Project Board.**
+
+---
+
+## 🔄 Development Process
+
+```text
+Create GitHub Issue
+        ↓
+Assign Team Member
+        ↓
+Move to In Progress
+        ↓
+Create Feature Branch
+        ↓
+Develop Feature
+        ↓
+Commit Changes
+        ↓
+Push Feature Branch
+        ↓
+Open Pull Request
+        ↓
+Ready for Integration
+        ↓
+Review & Integrate
+        ↓
+Test Feature
+        ↓
+Move to Tested
+        ↓
+Merge into Main
+        ↓
+Done
+```
+
+---
+
+## 🌿 Branching Strategy
+
+The `main` branch represents the stable integrated version of the project.
+
+Development work should be completed using feature branches.
+
+Example:
+
+```text
+main
+│
+├── feature/authentication
+├── feature/rls-security
+├── feature/streak-engine
+├── feature/panic-button
+├── feature/journal-search
+├── feature/anonymous-feed
+└── feature/analytics
+```
+
+Major development work should **not be performed directly on `main`**.
+
+Completed features should be integrated through **Pull Requests**.
+
+---
+
+## 🤝 Collaboration Guidelines
+
+Team members should:
+
+- Create or work from assigned GitHub Issues
+- Keep their task status updated
+- Use feature branches
+- Use meaningful commit messages
+- Push work regularly
+- Open Pull Requests when features are ready
+- Review changes before integration
+- Test integrated features
+- Document important technical decisions
+- Communicate blockers or dependencies with the team
+- Avoid overwriting another member's work
+
+---
+
+## 🗓️ Development Timeline
+
+| Sprint | Weeks | Focus |
+|---|:---:|---|
+| **Sprint 0** | 1–2 | Baseline schema, environment setup, wireframes, and minimal authentication |
+| **Sprint 1** | 3–6 | Parallel development of the four primary feature areas |
+| **Sprint 2** | 7–8 | Time-Series Analytics & Trend Engine |
+| **Sprint 3** | 9–10 | Feature Hardening & Cross-Feature Polish |
+| **Sprint 4** | 11–12 | Integration |
+| **Sprint 5** | 13–14 | Final Testing, Deployment, and Documentation |
+
+> 🧪 **Testing and Quality Assurance run continuously throughout development rather than only during the final sprint.**
+
+---
+
+## 📁 Planned Repository Structure
+
+```text
+Anchor-recovery-app/
+│
+├── README.md
+├── .gitignore
+│
+├── docs/
+│   ├── architecture/
+│   ├── database-design/
+│   └── project-documentation/
+│
+├── database/
+│   ├── schema/
+│   ├── migrations/
+│   ├── rls/
+│   ├── views/
+│   └── seed/
+│
+├── backend/
+│
+├── frontend/
+│
+├── tests/
+│
+└── scripts/
+```
+
+The repository structure may evolve as implementation decisions are finalized.
+
+---
+
+## 👥 Team
+
+<div align="center">
+
+| Team Member |
+|---|
+| **Sahar Atie** |
+| **Anastasiya Gorlov** |
+| **Kehinde O. Ayeyemi** |
+| **Sajal Bhattarai** |
+| **Assan Saidy** |
+
+</div>
+
+---
+
+## 📚 Course Information
+
+| | |
+|---|---|
+| **Course** | SE641 / CSCI695 — Application and Database Systems |
+| **Institution** | St. Cloud State University |
+| **Semester** | Fall 2026 |
+| **Project** | ANCHOR |
+
+---
+
+## 🚧 Current Status
+
+> ### Initial Development / Project Setup
+
+The team is currently establishing:
+
+- ✅ GitHub repository
+- 🔄 Team collaboration access
+- 🔄 GitHub Project Board
+- 🔄 Development workflow
+- 🔄 Database structure
+- 🔄 Development environment
+
+---
+
+## 🎓 Academic Purpose
+
+ANCHOR is being developed as an academic project for **SE641 / CSCI695 — Application and Database Systems**.
+
+The project demonstrates practical experience with:
+
+- Relational database design
+- Advanced PostgreSQL functionality
+- Database security
+- Caching
+- Search
+- Analytics
+- Application integration
+- Collaborative software development
+
+---
+
+## ⚠️ Disclaimer
+
+ANCHOR is an academic software project intended to support habit and addiction recovery tracking and reflection.
+
+It is **not intended to replace professional medical, psychological, addiction-treatment, crisis, or emergency services**.
+
+---
+
+<div align="center">
+
+### ⚓ ANCHOR
+
+**Private by Design • Accessible by Purpose • Built for Recovery**
+
+St. Cloud State University • Fall 2026
+
+</div>
+'@ | Set-Content -Path README.md -Encoding UTF8
+
+git add README.md
+git commit -m "Redesign README with professional project layout"
+git push origin main
