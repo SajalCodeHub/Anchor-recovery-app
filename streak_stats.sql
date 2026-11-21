@@ -1,10 +1,15 @@
+
 -- ANCHOR | Role 2: Streak Engine
 -- Current and longest streak statistics.
 -- Uses each goal's configured time zone.
 -- One missing day is allowed per streak.
--- A relapse immediately resets the current streak.
+-- Grace days do NOT increase streak length.
+-- A relapse resets the current streak.
+-- Security invoker respects underlying RLS policies.
 
-CREATE OR REPLACE VIEW public.streak_stats AS
+CREATE OR REPLACE VIEW public.streak_stats
+WITH (security_invoker = true)
+AS
 WITH goal_dates AS (
     SELECT
         goal_id,
@@ -23,27 +28,31 @@ SELECT
         WHEN last_checkin.status = 'relapse'
         THEN 0::bigint
 
-        -- A successful streak ending today or yesterday
-        -- remains current.
-        WHEN latest.streak_end >= g.local_today - 1
+        -- Successful check-in today:
+        -- the streak is active.
+        WHEN latest.streak_end = g.local_today
         THEN latest.streak_length
 
-        -- Last success was two days ago.
-        -- Yesterday may use the grace day,
-        -- but only if grace was not already used.
-        WHEN latest.streak_end = g.local_today - 2
+        -- Last success was yesterday.
+        -- Today can be a grace day ONLY if
+        -- no earlier grace day was used
+        -- in this same streak.
+        WHEN latest.streak_end = g.local_today - 1
              AND (
                  latest.streak_end
                  - latest.streak_start + 1
              ) = latest.streak_length
         THEN latest.streak_length
 
-        -- Otherwise, the streak has expired.
+        -- More than one missing day,
+        -- or the grace allowance was used.
         ELSE 0::bigint
     END AS current_streak,
 
-    COALESCE(history.longest_streak, 0::bigint)
-        AS longest_streak
+    COALESCE(
+        history.longest_streak,
+        0::bigint
+    ) AS longest_streak
 
 FROM goal_dates g
 
@@ -69,8 +78,8 @@ LEFT JOIN LATERAL (
 ) last_checkin ON TRUE
 
 LEFT JOIN LATERAL (
-    SELECT MAX(s.streak_length) AS longest_streak
+    SELECT
+        MAX(s.streak_length) AS longest_streak
     FROM public.streak_periods_grace s
     WHERE s.goal_id = g.goal_id
-      AND s.streak_end <= g.local_today
 ) history ON TRUE;

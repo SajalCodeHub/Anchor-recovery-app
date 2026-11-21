@@ -1,9 +1,13 @@
+
 -- ANCHOR | Role 2: Streak Engine
 -- Historical streak periods with one grace day per streak.
 -- A relapse always breaks the streak.
 -- streak_length counts successful check-ins, not grace days.
+-- Security invoker respects underlying RLS policies.
 
-CREATE OR REPLACE VIEW public.streak_periods_grace AS
+CREATE OR REPLACE VIEW public.streak_periods_grace
+WITH (security_invoker = true)
+AS
 WITH RECURSIVE ordered_checkins AS (
     SELECT
         dc.goal_id,
