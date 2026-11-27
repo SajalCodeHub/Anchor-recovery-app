@@ -1,4 +1,6 @@
--- Starter content for the panic button. Edit freely; the team can add more.
+-- Anchor | Role 3: starter content for the panic button.
+-- Run after 03_panic_button.sql. Safe to re-run.
+-- Edit freely; the team can add more.
 -- The 'crisis' rows are US resources; revisit if the app targets other regions.
 
 insert into public.motivational_messages (category, body) values

@@ -1,10 +1,10 @@
 # Panic Button & Redis Caching: Design Note
 
-Sprint 1 (Weeks 3-6). Owner: Panic Button / Redis. Database files live in
-`database/schema/panic_button.sql`, `database/rls/panic_button_rls.sql` and
-`database/seed/motivational_messages.sql`. Linking events to recovery goals is
-a separate step: `database/schema/panic_events_goal_link.sql` and
-`database/rls/panic_events_goal_link_rls.sql` (run after the Streak Engine schema).
+Sprint 1 (Weeks 3-6). Owner: Panic Button / Redis. Database files:
+`database/03_panic_button.sql` (tables, goal link and RLS; run after the auth
+file 01 and the Streak Engine file 02) and `database/03_panic_button_seed.sql`
+(starter messages). User-owned tables follow the team convention: `user_id`
+defaults to `auth.uid()` and references `public.profiles(id)`.
 
 ## Goal
 
